@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 src/.godot/
 src/.nomedia
+src/godothost
 
 # Godot-specific ignores
 src/.import/
