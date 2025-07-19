@@ -1,6 +1,6 @@
 extends Control
-
-
+# a useless comment
+ 
 func _on_menu_pressed() -> void:
 	get_tree().paused = true
 	$Control.show()
