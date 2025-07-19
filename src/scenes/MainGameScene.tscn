@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbxcll3o3r2bw"]
+[gd_scene load_steps=17 format=3 uid="uid://cbxcll3o3r2bw"]
 
 [ext_resource type="StyleBox" uid="uid://cta87mddaw1lb" path="res://styles/ButtonPressed3.tres" id="1_cpixv"]
 [ext_resource type="Script" uid="uid://dw6nf4866w361" path="res://scripts/main_game_scene.gd" id="1_dj5d6"]
 [ext_resource type="PackedScene" uid="uid://1rbmbd6epijo" path="res://scenes/PauseMenu.tscn" id="2_3h06o"]
 [ext_resource type="StyleBox" uid="uid://dssc6chnwlufx" path="res://styles/Button3.tres" id="2_foylg"]
+[ext_resource type="Script" uid="uid://4af2s7uft6t2" path="res://scenes/game_logic.gd" id="2_yo3tn"]
 [ext_resource type="StyleBox" uid="uid://dxp1cyqhiiijf" path="res://styles/TurretButtonPressed.tres" id="3_cckdu"]
+[ext_resource type="Script" uid="uid://bb12fl26yq35s" path="res://scenes/label.gd" id="3_v3nyh"]
 [ext_resource type="StyleBox" uid="uid://dxnwe17f0alui" path="res://styles/TurretButton.tres" id="4_xh18f"]
 [ext_resource type="StyleBox" uid="uid://b8k4eale1nwnd" path="res://styles/MineButtonPressed.tres" id="5_11x1d"]
 [ext_resource type="StyleBox" uid="uid://8hmee30tnv84" path="res://styles/MineButton.tres" id="6_jpwhd"]
@@ -70,9 +72,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dj5d6")
 
-[node name="Control" parent="." instance=ExtResource("2_3h06o")]
-visible = false
-layout_mode = 1
+[node name="GameLogic" type="Node" parent="."]
+script = ExtResource("2_yo3tn")
+
+[node name="Label" type="Label" parent="GameLogic"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_v3nyh")
 
 [node name="Menu" type="Button" parent="."]
 layout_mode = 1
@@ -147,6 +153,10 @@ theme_override_styles/hover = ExtResource("8_dj5d6")
 theme_override_styles/pressed = ExtResource("7_dl7an")
 theme_override_styles/normal = ExtResource("8_dj5d6")
 text = "F"
+
+[node name="Control" parent="." instance=ExtResource("2_3h06o")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Turrets" to="." method="_on_turrets_pressed"]
