@@ -8,6 +8,3 @@ func _on_quit_pressed() -> void:
 func _on_start_pressed() -> void:
 	var scene: String =  "res://scenes/MainGameScene.tscn"
 	get_tree().change_scene_to_file(scene)
-	
-
-	pass # Replace with function body.
