@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbxcll3o3r2bw"]
+[gd_scene load_steps=21 format=3 uid="uid://cbxcll3o3r2bw"]
 
 [ext_resource type="StyleBox" uid="uid://cta87mddaw1lb" path="res://styles/ButtonPressed3.tres" id="1_cpixv"]
 [ext_resource type="Script" uid="uid://dw6nf4866w361" path="res://scripts/main_game_scene.gd" id="1_dj5d6"]
@@ -12,6 +12,10 @@
 [ext_resource type="StyleBox" uid="uid://8hmee30tnv84" path="res://styles/MineButton.tres" id="6_jpwhd"]
 [ext_resource type="StyleBox" uid="uid://5t2ayr2shtd" path="res://styles/FlameButtonPressed.tres" id="7_dl7an"]
 [ext_resource type="StyleBox" uid="uid://ex2fw48c28wf" path="res://styles/FlameButton.tres" id="8_dj5d6"]
+[ext_resource type="AudioStream" uid="uid://56vkdo1b4ed7" path="res://audio/grizzly_sound.mp3" id="13_v3nyh"]
+[ext_resource type="AudioStream" uid="uid://c3rlgda2fn653" path="res://audio/footsteps.wav" id="14_4ejei"]
+[ext_resource type="AudioStream" uid="uid://k4q67jnkwmb" path="res://audio/big_wings.wav" id="15_qlvwj"]
+[ext_resource type="AudioStream" uid="uid://oslmnxjrxfw0" path="res://audio/cricket_sound.wav" id="16_qlvwj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpixv"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -157,6 +161,20 @@ text = "F"
 [node name="Control" parent="." instance=ExtResource("2_3h06o")]
 visible = false
 layout_mode = 1
+
+[node name="GrizzlySound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 320)
+stream = ExtResource("13_v3nyh")
+
+[node name="FootSteps" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_4ejei")
+volume_db = 6.0
+
+[node name="BigWings" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_qlvwj")
+
+[node name="CricketSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_qlvwj")
 
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Turrets" to="." method="_on_turrets_pressed"]
