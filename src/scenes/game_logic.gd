@@ -1,9 +1,9 @@
 extends Node
 
 #all in seconds
-const MAX_TIME = 120
-const SAFE_TIME = 1
-const BUFFER_TIME = 7
+const MAX_TIME = 50
+const SAFE_TIME = 10
+const BUFFER_TIME = 1
 
 var tsound: AudioStreamPlayer2D
 var msound: AudioStreamPlayer2D
@@ -32,9 +32,9 @@ func _ready() -> void:
 	soundArray.push_back(msound)
 	soundArray.push_back(fsound)
 
-	dangerdict[tsound] = tweapon #when sounds are different remove "" from tsound
-	dangerdict[msound] = mweapon #ditto
-	dangerdict[fsound] = fweapon #ditto
+	dangerdict[tsound] = tweapon
+	dangerdict[msound] = mweapon
+	dangerdict[fsound] = fweapon
 
 	ssoundArray.push_back(get_node("../CricketSound"))
 
@@ -46,6 +46,9 @@ func _process(delta: float) -> void:
 	if time_passed <= MAX_TIME:
 		time_passed += delta
 		ts = convert_to_string(time_passed)
+	else:
+		var scene: String =  "res://scenes/NightEnd.tscn"
+		get_tree().change_scene_to_file(scene)
 
 	if arr_index < 7 and int(time_passed) == tarr[arr_index]:
 		print(sarr[arr_index])
