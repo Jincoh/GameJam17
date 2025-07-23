@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cbxcll3o3r2bw"]
+[gd_scene load_steps=23 format=3 uid="uid://cbxcll3o3r2bw"]
 
 [ext_resource type="StyleBox" uid="uid://cta87mddaw1lb" path="res://styles/ButtonPressed3.tres" id="1_cpixv"]
 [ext_resource type="Script" uid="uid://dw6nf4866w361" path="res://scripts/main_game_scene.gd" id="1_dj5d6"]
@@ -29,6 +29,12 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="InputEventKey" id="InputEventKey_qlvwj"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_4j5hr"]
+events = [SubResource("InputEventKey_qlvwj")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cckdu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -100,6 +106,7 @@ theme_override_styles/hover_pressed = ExtResource("1_cpixv")
 theme_override_styles/hover = ExtResource("2_foylg")
 theme_override_styles/pressed = ExtResource("1_cpixv")
 theme_override_styles/normal = ExtResource("2_foylg")
+shortcut = SubResource("Shortcut_4j5hr")
 text = "Menu"
 
 [node name="Turrets" type="Button" parent="."]

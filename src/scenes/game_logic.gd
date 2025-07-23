@@ -1,7 +1,9 @@
 extends Node
 
-const MAX_TIME = 50 
+#all in seconds
+const MAX_TIME = 120
 const SAFE_TIME = 1
+const BUFFER_TIME = 7
 
 var tsound: AudioStreamPlayer2D
 var msound: AudioStreamPlayer2D
@@ -56,7 +58,6 @@ func _process(delta: float) -> void:
 
 		arr_index += 1
 		print(time_passed)
-		# logic for playing safe vs danger sound goes here
 
 
 func convert_to_string(time) -> String:
@@ -69,8 +70,10 @@ func convert_to_string(time) -> String:
 
 
 func fill_time_array():
+	var valid_times = range(SAFE_TIME, MAX_TIME, BUFFER_TIME)
+	valid_times.shuffle()
 	for i in range(len(sarr)):
-		tarr.push_back(randi_range(SAFE_TIME, MAX_TIME))
+		tarr.push_back(valid_times.pop_back())
 	tarr.sort()
 	print(tarr)
 
