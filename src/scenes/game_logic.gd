@@ -47,8 +47,9 @@ func _process(delta: float) -> void:
 		time_passed += delta
 		ts = convert_to_string(time_passed)
 	else:
-		var scene: String =  "res://scenes/NightEnd.tscn"
-		get_tree().change_scene_to_file(scene)
+		var NightEndScene: String =  "res://scenes/NightEnd.tscn"
+		Globals.score += 1
+		get_tree().change_scene_to_file(NightEndScene)
 
 	if arr_index < 7 and int(time_passed) == tarr[arr_index]:
 		print(sarr[arr_index])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbxcll3o3r2bw"]
+[gd_scene load_steps=24 format=3 uid="uid://cbxcll3o3r2bw"]
 
 [ext_resource type="StyleBox" uid="uid://cta87mddaw1lb" path="res://styles/ButtonPressed3.tres" id="1_cpixv"]
 [ext_resource type="Script" uid="uid://dw6nf4866w361" path="res://scripts/main_game_scene.gd" id="1_dj5d6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://4af2s7uft6t2" path="res://scenes/game_logic.gd" id="2_yo3tn"]
 [ext_resource type="StyleBox" uid="uid://dxp1cyqhiiijf" path="res://styles/TurretButtonPressed.tres" id="3_cckdu"]
 [ext_resource type="Script" uid="uid://bb12fl26yq35s" path="res://scenes/label.gd" id="3_v3nyh"]
+[ext_resource type="Script" uid="uid://y506fji2uoee" path="res://scenes/score.gd" id="4_4j5hr"]
 [ext_resource type="StyleBox" uid="uid://dxnwe17f0alui" path="res://styles/TurretButton.tres" id="4_xh18f"]
 [ext_resource type="StyleBox" uid="uid://b8k4eale1nwnd" path="res://styles/MineButtonPressed.tres" id="5_11x1d"]
 [ext_resource type="StyleBox" uid="uid://8hmee30tnv84" path="res://styles/MineButton.tres" id="6_jpwhd"]
@@ -89,6 +90,12 @@ script = ExtResource("2_yo3tn")
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_v3nyh")
+
+[node name="Score" type="Label" parent="GameLogic"]
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+script = ExtResource("4_4j5hr")
 
 [node name="Menu" type="Button" parent="."]
 layout_mode = 1

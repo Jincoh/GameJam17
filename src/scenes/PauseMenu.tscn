@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://1rbmbd6epijo"]
+[gd_scene load_steps=9 format=3 uid="uid://1rbmbd6epijo"]
 
 [ext_resource type="Script" uid="uid://tbq5vblfqfdd" path="res://scripts/pause_menu.gd" id="1_2yxiw"]
+[ext_resource type="Script" uid="uid://y506fji2uoee" path="res://scenes/score.gd" id="2_40atx"]
 [ext_resource type="StyleBox" uid="uid://b8k4eale1nwnd" path="res://styles/MineButtonPressed.tres" id="2_jiu6o"]
 [ext_resource type="StyleBox" uid="uid://5t2ayr2shtd" path="res://styles/FlameButtonPressed.tres" id="2_komsw"]
 [ext_resource type="StyleBox" uid="uid://ex2fw48c28wf" path="res://styles/FlameButton.tres" id="3_5w6ei"]
@@ -39,6 +40,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2yxiw")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("2_40atx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
