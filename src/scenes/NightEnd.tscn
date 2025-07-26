@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy63g876n4hxu"]
+[gd_scene load_steps=9 format=3 uid="uid://dy63g876n4hxu"]
 
 [ext_resource type="StyleBox" uid="uid://dqkb06nq55hbr" path="res://styles/ContinueButtonPressed.tres" id="1_3ev68"]
 [ext_resource type="Script" uid="uid://bra6my41qpvc2" path="res://scripts/night_end.gd" id="1_o6tib"]
@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://dhkt115jxsedc" path="res://styles/QuitButtonPressed.tres" id="3_w518f"]
 [ext_resource type="StyleBox" uid="uid://doptsfkct8dni" path="res://styles/QuitButton.tres" id="4_t142w"]
 [ext_resource type="Theme" uid="uid://bi77fn5hxej3b" path="res://styles/themes/Theme_For_Label.tres" id="5_bbhb6"]
+[ext_resource type="Script" uid="uid://y506fji2uoee" path="res://scenes/score.gd" id="7_w518f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vt10"]
 
@@ -65,6 +66,11 @@ theme = ExtResource("5_bbhb6")
 text = "Night Survived"
 label_settings = SubResource("LabelSettings_4vt10")
 horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("7_w518f")
 
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
