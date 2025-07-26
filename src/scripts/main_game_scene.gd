@@ -4,6 +4,15 @@ extends Control
 var mUses = 1
 var tUses = 1
 var fUses = 1
+
+var turret
+var mines
+var flameThrower
+
+func _ready() -> void:
+	turret = $Turrets
+	mines = $Mines
+	flameThrower = $FlameThrower
  
 func _on_menu_pressed() -> void:
 	get_tree().paused = true
@@ -11,21 +20,15 @@ func _on_menu_pressed() -> void:
 
 func _on_mines_pressed() -> void:
 	if mUses >= 1:
-		#add the weapon function
+		mines.activate_mines()
 		mUses -=1
-	else:
-		pass		
 	
 func _on_turrets_pressed() -> void:
 	if tUses >= 1:
-		#add the weapon function
+		turret.activate_turret()
 		tUses -=1
-	else:
-		pass
 
 func _on_flame_thrower_pressed() -> void:
 	if fUses >= 1:
-		#add the weapon function
+		flameThrower.activate_flamethrower()
 		fUses -=1
-	else:
-		pass
