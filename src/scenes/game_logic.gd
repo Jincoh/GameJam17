@@ -1,8 +1,8 @@
 extends Node
 
 #all in seconds
-const MAX_TIME = 50
-const SAFE_TIME = 10
+const MAX_TIME = 60
+const SAFE_TIME = 0
 const BUFFER_TIME = 1
 
 var tsound: AudioStreamPlayer2D
@@ -11,9 +11,9 @@ var fsound: AudioStreamPlayer2D
 var soundArray: = []
 var ssoundArray: = []
 var dangerdict = {}
-var tweapon = ""
-var mweapon = ""
-var fweapon = "" 
+var tweapon
+var mweapon
+var fweapon
 
 var time_passed = 0.0
 var ts = 0
@@ -21,12 +21,23 @@ var sarr = ["safe", "danger", "safe","safe","safe","safe","safe"]
 var tarr = []
 var arr_index: int = 0
 var gsound: AudioStreamPlayer2D
+var NightEndScene
+var DeathScene
+var x: bool = false
 
+var thread: Thread
 
 func _ready() -> void:
+	thread = Thread.new()
+
+	NightEndScene =  "res://scenes/NightEnd.tscn"
 	tsound = get_node("../FootSteps")
 	msound = get_node("../GrizzlySound")
 	fsound = get_node("../BigWings")
+	
+	tweapon = get_node("../Turrets")
+	mweapon = get_node("../Mines")
+	fweapon = get_node("../FlameThrower")
 	
 	soundArray.push_back(tsound)
 	soundArray.push_back(msound)
@@ -42,19 +53,25 @@ func _ready() -> void:
 	fill_time_array()
 
 func _process(delta: float) -> void:
+	if x == true:
+		print("Scene Change Ded")
+		thread.wait_to_finish()
+		get_tree().change_scene_to_file("res://scenes/death.tscn")
 
 	if time_passed <= MAX_TIME:
 		time_passed += delta
 		ts = convert_to_string(time_passed)
 	else:
-		var scene: String =  "res://scenes/NightEnd.tscn"
-		get_tree().change_scene_to_file(scene)
+		Globals.score += 1
+		thread.wait_to_finish()
+		get_tree().change_scene_to_file(NightEndScene)
 
 	if arr_index < 7 and int(time_passed) == tarr[arr_index]:
 		print(sarr[arr_index])
 		if sarr[arr_index] == "danger":
 			print("danger sound play")
-			play_random_danger_sound()
+			x = thread.start(_check_for_weapon.bind(play_random_danger_sound()))
+			
 		elif sarr[arr_index] == "safe":
 			print("safe sound play")
 			play_random_safe_sound()
@@ -85,8 +102,20 @@ func play_random_danger_sound():
 	var randSound: AudioStreamPlayer2D = soundArray.pick_random()
 	print(randSound)
 	randSound.play()
+	return randSound
 
 func play_random_safe_sound():
 	var randSound: AudioStreamPlayer2D = ssoundArray.pick_random()
 	print(randSound)
 	randSound.play()
+
+func _check_for_weapon(sound: AudioStreamPlayer2D):
+	print("in thread")
+	while(sound.playing):
+		if(dangerdict[sound].isActive):
+			print("correct")
+			sound.stop()
+			return
+	x = true
+	return
+	

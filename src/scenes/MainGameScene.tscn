@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbxcll3o3r2bw"]
+[gd_scene load_steps=27 format=3 uid="uid://cbxcll3o3r2bw"]
 
 [ext_resource type="StyleBox" uid="uid://cta87mddaw1lb" path="res://styles/ButtonPressed3.tres" id="1_cpixv"]
 [ext_resource type="Script" uid="uid://dw6nf4866w361" path="res://scripts/main_game_scene.gd" id="1_dj5d6"]
@@ -7,13 +7,17 @@
 [ext_resource type="Script" uid="uid://4af2s7uft6t2" path="res://scenes/game_logic.gd" id="2_yo3tn"]
 [ext_resource type="StyleBox" uid="uid://dxp1cyqhiiijf" path="res://styles/TurretButtonPressed.tres" id="3_cckdu"]
 [ext_resource type="Script" uid="uid://bb12fl26yq35s" path="res://scenes/label.gd" id="3_v3nyh"]
+[ext_resource type="Script" uid="uid://y506fji2uoee" path="res://scenes/score.gd" id="4_4j5hr"]
 [ext_resource type="StyleBox" uid="uid://dxnwe17f0alui" path="res://styles/TurretButton.tres" id="4_xh18f"]
 [ext_resource type="StyleBox" uid="uid://b8k4eale1nwnd" path="res://styles/MineButtonPressed.tres" id="5_11x1d"]
 [ext_resource type="StyleBox" uid="uid://8hmee30tnv84" path="res://styles/MineButton.tres" id="6_jpwhd"]
 [ext_resource type="StyleBox" uid="uid://5t2ayr2shtd" path="res://styles/FlameButtonPressed.tres" id="7_dl7an"]
 [ext_resource type="StyleBox" uid="uid://ex2fw48c28wf" path="res://styles/FlameButton.tres" id="8_dj5d6"]
+[ext_resource type="Script" uid="uid://3j81k4dfpkmd" path="res://scenes/turrets.gd" id="9_yilvf"]
+[ext_resource type="Script" uid="uid://do1rec1aadidh" path="res://scenes/mines.gd" id="12_rox5w"]
 [ext_resource type="AudioStream" uid="uid://56vkdo1b4ed7" path="res://audio/grizzly_sound.mp3" id="13_v3nyh"]
 [ext_resource type="AudioStream" uid="uid://c3rlgda2fn653" path="res://audio/footsteps.wav" id="14_4ejei"]
+[ext_resource type="Script" uid="uid://bku2t1wbum54" path="res://scenes/flame_thrower.gd" id="15_jvspx"]
 [ext_resource type="AudioStream" uid="uid://k4q67jnkwmb" path="res://audio/big_wings.wav" id="15_qlvwj"]
 [ext_resource type="AudioStream" uid="uid://oslmnxjrxfw0" path="res://audio/cricket_sound.wav" id="16_qlvwj"]
 
@@ -90,6 +94,12 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_v3nyh")
 
+[node name="Score" type="Label" parent="GameLogic"]
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 48.0
+script = ExtResource("4_4j5hr")
+
 [node name="Menu" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -128,6 +138,11 @@ theme_override_styles/hover = ExtResource("4_xh18f")
 theme_override_styles/pressed = ExtResource("3_cckdu")
 theme_override_styles/normal = ExtResource("4_xh18f")
 text = "T"
+script = ExtResource("9_yilvf")
+
+[node name="TTimer" type="Timer" parent="Turrets"]
+wait_time = 3.0
+one_shot = true
 
 [node name="Mines" type="Button" parent="."]
 layout_mode = 1
@@ -146,6 +161,11 @@ theme_override_styles/hover = ExtResource("6_jpwhd")
 theme_override_styles/pressed = ExtResource("5_11x1d")
 theme_override_styles/normal = ExtResource("6_jpwhd")
 text = "M"
+script = ExtResource("12_rox5w")
+
+[node name="MTimer" type="Timer" parent="Mines"]
+wait_time = 3.0
+one_shot = true
 
 [node name="FlameThrower" type="Button" parent="."]
 layout_mode = 1
@@ -164,6 +184,11 @@ theme_override_styles/hover = ExtResource("8_dj5d6")
 theme_override_styles/pressed = ExtResource("7_dl7an")
 theme_override_styles/normal = ExtResource("8_dj5d6")
 text = "F"
+script = ExtResource("15_jvspx")
+
+[node name="FTimer" type="Timer" parent="FlameThrower"]
+wait_time = 3.0
+one_shot = true
 
 [node name="Control" parent="." instance=ExtResource("2_3h06o")]
 visible = false
@@ -185,5 +210,8 @@ stream = ExtResource("16_qlvwj")
 
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Turrets" to="." method="_on_turrets_pressed"]
+[connection signal="timeout" from="Turrets/TTimer" to="Turrets" method="timeout"]
 [connection signal="pressed" from="Mines" to="." method="_on_mines_pressed"]
+[connection signal="timeout" from="Mines/MTimer" to="Mines" method="timeout"]
 [connection signal="pressed" from="FlameThrower" to="." method="_on_flame_thrower_pressed"]
+[connection signal="timeout" from="FlameThrower/FTimer" to="FlameThrower" method="timeout"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://dobb1o7dy3eiy"]
+
+[ext_resource type="Theme" uid="uid://bi77fn5hxej3b" path="res://styles/themes/Theme_For_Label.tres" id="1_6up1m"]
+[ext_resource type="Script" uid="uid://wenaidlc3bvt" path="res://scenes/death.gd" id="1_w0no0"]
+[ext_resource type="StyleBox" uid="uid://dqkb06nq55hbr" path="res://styles/ContinueButtonPressed.tres" id="2_w0no0"]
+[ext_resource type="StyleBox" uid="uid://dmeskrqjkgge8" path="res://styles/continue_button.tres" id="3_7205l"]
+[ext_resource type="StyleBox" uid="uid://dhkt115jxsedc" path="res://styles/QuitButtonPressed.tres" id="4_2m3wi"]
+[ext_resource type="StyleBox" uid="uid://doptsfkct8dni" path="res://styles/QuitButton.tres" id="5_3l7jp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_shhaa"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w0no0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.326
+anchor_right = 0.5
+anchor_bottom = 0.326
+offset_left = -64.0
+offset_top = -11.248
+offset_right = 64.0
+offset_bottom = 12.752
+theme = ExtResource("1_6up1m")
+text = "You Died"
+label_settings = SubResource("LabelSettings_shhaa")
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.444
+anchor_top = 0.444
+anchor_right = 0.444
+anchor_bottom = 0.444
+offset_left = -39.488
+offset_top = -15.712
+offset_right = 40.512
+offset_bottom = 16.288
+theme_override_styles/hover_pressed = ExtResource("2_w0no0")
+theme_override_styles/hover = ExtResource("3_7205l")
+theme_override_styles/pressed = ExtResource("2_w0no0")
+theme_override_styles/normal = ExtResource("3_7205l")
+text = "Restart"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.556
+anchor_top = 0.444
+anchor_right = 0.556
+anchor_bottom = 0.444
+offset_left = -40.5121
+offset_top = -15.712
+offset_right = 39.4879
+offset_bottom = 16.288
+theme_override_styles/hover_pressed = ExtResource("4_2m3wi")
+theme_override_styles/hover = ExtResource("5_3l7jp")
+theme_override_styles/pressed = ExtResource("4_2m3wi")
+theme_override_styles/normal = ExtResource("5_3l7jp")
+text = "quit"
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
