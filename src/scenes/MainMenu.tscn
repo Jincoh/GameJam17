@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://frigtm2fedq5"]
+[gd_scene load_steps=5 format=3 uid="uid://frigtm2fedq5"]
 
 [ext_resource type="StyleBox" uid="uid://crfx6u8l5a5uc" path="res://styles/Buttons.tres" id="1_2wh52"]
 [ext_resource type="Script" uid="uid://bsq7grcfhj5vx" path="res://scripts/main_menu.gd" id="1_ow34m"]
 [ext_resource type="StyleBox" uid="uid://bniv55jgr2nrd" path="res://styles/ButtonsPressed2.tres" id="2_2wh52"]
+[ext_resource type="Texture2D" uid="uid://ccgeide7vwkj" path="res://images/Door.png" id="2_ow34m"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,6 +13,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ow34m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ow34m")
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 1
