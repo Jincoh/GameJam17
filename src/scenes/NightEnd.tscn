@@ -10,7 +10,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vt10"]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,6 +68,7 @@ label_settings = SubResource("LabelSettings_4vt10")
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("7_w518f")
